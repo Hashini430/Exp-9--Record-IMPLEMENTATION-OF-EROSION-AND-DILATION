@@ -15,44 +15,109 @@ create the structuting element
 Erodde the image
 ### Step5:
 Dilate the image
+## Import Libraries
 
- 
-## Program:
-
-``` 
+## PROGRAM
+```python
 import cv2
 import numpy as np
 from matplotlib import pyplot as plt
-imput_image='actor.jpg'
-color_image=cv2.imread(imput_image)
-gray_image=cv2.cvtColor(color_image,cv2.COLOR_BGR2GRAY)
-edges=cv2.Canny(gray_image,100,200)
-kernel_size=5
-kernel=np.ones((kernel_size,kernel_size),np.uint8)
-erosion=cv2.erode(edges,kernel,iterations=1)
-dilation=cv2.dilate(edges,kernel,iterations=1)
-plt.figure(figsize=(15,10))
-plt.subplot(2,3,1)
-plt.imshow(cv2.cvtColor(color_image,cv2.COLOR_BGR2RGB))
+```
+
+## Load Input Image
+
+```python
+input_image = 'actor.jpg'
+color_image = cv2.imread(input_image)
+```
+
+## Convert Color Image to Grayscale
+
+```python
+gray_image = cv2.cvtColor(color_image, cv2.COLOR_BGR2GRAY)
+```
+
+## Perform Edge Detection
+
+```python
+edges = cv2.Canny(gray_image, 100, 200)
+```
+
+## Create Kernel for Morphological Operations
+
+```python
+kernel_size = 5
+kernel = np.ones((kernel_size, kernel_size), np.uint8)
+```
+
+## Apply Erosion
+
+```python
+erosion = cv2.erode(edges, kernel, iterations=1)
+```
+
+## Apply Dilation
+
+```python
+dilation = cv2.dilate(edges, kernel, iterations=1)
+```
+
+## Create Figure
+
+```python
+plt.figure(figsize=(15, 10))
+```
+
+## Display Original Color Image
+
+```python
+plt.subplot(2, 3, 1)
+plt.imshow(cv2.cvtColor(color_image, cv2.COLOR_BGR2RGB))
 plt.title('Original Color Image')
 plt.axis('on')
-plt.subplot(2,3,2)
-plt.imshow(gray_image,cmap='gray')
-plt.title('black and white image')
-plt.axis('on')
-plt.subplot(2,3,3)
-plt.imshow(edges,cmap='gray')
-plt.title('edge segmentation')
-plt.axis('on')
-plt.subplot(2,3,4)
-plt.imshow(edges,cmap='gray')
-plt.title('erosion')
-plt.axis('on')
-plt.subplot(2,3,5)
-plt.imshow(edges,cmap='gray')
-plt.title('dilation')
-plt.axis('on')
+```
 
+## Display Grayscale Image
+
+```python
+plt.subplot(2, 3, 2)
+plt.imshow(gray_image, cmap='gray')
+plt.title('Black and White Image')
+plt.axis('on')
+```
+
+## Display Edge Segmentation
+
+```python
+plt.subplot(2, 3, 3)
+plt.imshow(edges, cmap='gray')
+plt.title('Edge Segmentation')
+plt.axis('on')
+```
+
+## Display Erosion Result
+
+```python
+plt.subplot(2, 3, 4)
+plt.imshow(erosion, cmap='gray')
+plt.title('Erosion')
+plt.axis('on')
+```
+
+## Display Dilation Result
+
+```python
+plt.subplot(2, 3, 5)
+plt.imshow(dilation, cmap='gray')
+plt.title('Dilation')
+plt.axis('on')
+```
+
+## Show Output
+
+```python
+plt.tight_layout()
+plt.show()
 ```
 ## Output:
 
